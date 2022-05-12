@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+.ob-colors{
+  --unbleached-silk: hsla(23, 68%, 85%, 1);
+  --pastel-pink: hsla(9, 62%, 74%, 1);
+  --english-vermillion: hsla(358, 62%, 55%, 1);
+  --pansy-purple: hsla(329, 65%, 27%, 1);
+  --orchid: hsla(299, 59%, 63%, 1);
+
+  --tea-green: hsla(117, 62%, 86%, 1);
+  --granny-smith-apple: hsla(111, 66%, 78%, 1);
+  --dark-sea-green: hsla(108, 28%, 65%, 1);
+  --russian-green: hsla(118, 21%, 48%, 1);
+  --kombu-green: hsla(93, 32%, 15%, 1);
+
+  --spanish-blue: hsla(210, 67%, 43%, 1);
+  --dark-pastel-green: hsla(116, 46%, 50%, 1);
+  --silver: hsla(0, 0%, 76%, 1);
+  --green-yellow-crayola: hsla(55, 81%, 79%, 1);
+  --fiery-rose: hsla(352, 100%, 68%, 1);
+  --sea-green-crayola: hsla(166, 100%, 50%, 1);
+  --blizzard-blue: hsla(187, 100%, 84%, 1);
+
+  --tufts-blue: hsla(210, 68%, 57%, 1);
+  --mantis: hsla(117, 46%, 62%, 1);
+  --light-gray: hsla(0, 0%, 82%, 1);
+  --blond: hsla(55, 80%, 84%, 1);
+  --salmon-pink: hsla(352, 100%, 76%, 1);
+  --aquamarine: hsla(166, 100%, 76%, 1);
+  --light-cyan: hsla(186, 100%, 93%, 1);
+}
+
+body{
+  background-color: hsl(343, 8%, 18%);
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

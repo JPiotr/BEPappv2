@@ -1,0 +1,129 @@
+
+<!--1.Card View-->
+<ng-container *ngIf="(appState$ | async) as appState " [ngSwitch]="appState.dataState">
+  <div class="ob-content">
+    <div class="ob-card-container" *ngFor="let client of appState.appData?.data?.clients">
+      <div class="ob-card">
+        <ng-container *ngIf="client.status == defaultState.OK">
+          <mat-card class="ob-front-side ob-client ob-client-ok">
+            <mat-card-header>
+              <mat-card-title>{{client.code}}</mat-card-title>
+              <mat-card-subtitle>
+                <mat-icon class="ob-icon-size">
+                  check_circle_outline
+                </mat-icon>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="ob-flex  ob-size-100-70">
+              <h1 class="ob-front-size">
+                {{client.name}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+        <ng-container *ngIf="client.status == defaultState.BAD">
+          <mat-card class="ob-front-side ob-client ob-client-bad">
+            <mat-card-header>
+              <mat-card-title>{{client.code}}</mat-card-title>
+              <mat-card-subtitle>
+                <mat-icon class="ob-icon-size">
+                  highlight_off
+                </mat-icon>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="ob-flex  ob-size-100-70">
+              <h1 class="ob-front-size">
+                {{client.name}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+        <ng-container *ngIf="client.status == defaultState.UNKNOWN">
+          <mat-card class="ob-front-side ob-client ob-client-unknown">
+            <mat-card-header>
+              <mat-card-title>{{client.code}}</mat-card-title>
+              <mat-card-subtitle>
+                <mat-icon class="ob-icon-size">
+                  help_outline
+                </mat-icon>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="ob-flex  ob-size-100-70">
+              <h1 class="ob-front-size">
+                {{client.name}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+        <ng-container *ngIf="client.status == defaultState.NEW">
+          <mat-card class="ob-front-side ob-client ob-client-new">
+            <mat-card-header>
+              <mat-card-title>{{client.code}}</mat-card-title>
+              <mat-card-subtitle>
+                <mat-icon class="ob-icon-size">
+                  add_circle_outline
+                </mat-icon>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="ob-flex  ob-size-100-70">
+              <h1 class="ob-front-size">
+                {{client.name}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+        <ng-container *ngIf="client.status == defaultState.CHANGED">
+          <mat-card class="ob-front-side ob-client ob-client-changed">
+            <mat-card-header>
+              <mat-card-title>{{client.code}}</mat-card-title>
+              <mat-card-subtitle>
+                <mat-icon class="ob-icon-size">
+                  history
+                </mat-icon>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="ob-flex  ob-size-100-70">
+              <h1 class="ob-front-size">
+                {{client.name}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+        <mat-card class="ob-back-side">
+          <mat-card-header>
+            <mat-card-title>0</mat-card-title>
+            <mat-card-subtitle>Client Access Available</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-list>
+              <mat-divider></mat-divider>
+                <h4>Insert Date</h4>
+                <h2>{{client.insertDate | date:'d.MM.YYYY'}}</h2>
+              <mat-divider></mat-divider>
+                <h4>Last Modify Date</h4>
+                <h2>{{client.modifyDate | date:'d.MM.YYYY'}}</h2>
+              <mat-divider></mat-divider>
+              <h4>Accounting Office</h4>
+              <h2>
+                <ng-container *ngIf="client.isBR == true">
+                  <mat-icon>done</mat-icon>
+                </ng-container>
+                <ng-container *ngIf="client.isBR == false">
+                  <mat-icon>clear</mat-icon>
+                </ng-container>
+              </h2>
+            </mat-list>
+          </mat-card-content>
+          <mat-card-actions class="ob-flex">
+            <button mat-fab class="ob-button-size ob-icon-green">
+              <mat-icon>open_in_full</mat-icon>
+            </button>
+            <button mat-fab class="ob-button-size ob-icon-red">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</ng-container>

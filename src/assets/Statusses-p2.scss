@@ -1,0 +1,32 @@
+/* Coolors Exported Palette - https://coolors.co/00ffc5-adf5ff */
+
+///* CSS HEX */
+//--sea-green-crayola: #00ffc5ff;
+//--blizzard-blue: #adf5ffff;
+//
+///* CSS HSL */
+//--sea-green-crayola: hsla(166, 100%, 50%, 1);
+//--blizzard-blue: hsla(187, 100%, 84%, 1);
+
+/* SCSS HEX */
+$sea-green-crayola: #00ffc5ff;
+$blizzard-blue: #adf5ffff;
+
+/* SCSS HSL */
+$sea-green-crayola: hsla(166, 100%, 50%, 1);
+$blizzard-blue: hsla(187, 100%, 84%, 1);
+
+/* SCSS RGB */
+$sea-green-crayola: rgba(0, 255, 197, 1);
+$blizzard-blue: rgba(173, 245, 255, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #00ffc5ff, #adf5ffff);
+$gradient-right: linear-gradient(90deg, #00ffc5ff, #adf5ffff);
+$gradient-bottom: linear-gradient(180deg, #00ffc5ff, #adf5ffff);
+$gradient-left: linear-gradient(270deg, #00ffc5ff, #adf5ffff);
+$gradient-top-right: linear-gradient(45deg, #00ffc5ff, #adf5ffff);
+$gradient-bottom-right: linear-gradient(135deg, #00ffc5ff, #adf5ffff);
+$gradient-top-left: linear-gradient(225deg, #00ffc5ff, #adf5ffff);
+$gradient-bottom-left: linear-gradient(315deg, #00ffc5ff, #adf5ffff);
+$gradient-radial: radial-gradient(#00ffc5ff, #adf5ffff);

@@ -6,6 +6,7 @@ import {EDataState} from "../../../core/e-data-state";
 import {EDefaultState} from "../e-default-state";
 import {ClientService} from "../../../core/services/client.service";
 import {catchError} from "rxjs/operators";
+import {MatCard} from "@angular/material/card";
 
 @Component({
   selector: 'app-client-list',
@@ -35,4 +36,6 @@ export class ClientListComponent implements OnInit {
         startWith({dataState: EDataState.LOADING})
       );
   }
+
+
 }
