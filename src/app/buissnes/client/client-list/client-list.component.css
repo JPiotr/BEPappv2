@@ -2,13 +2,29 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: space-around;
+  align-content: space-between;
+  font-family: 'VT323', monospace;
 
 }
 .ob-front-size{
-  font-size:2em;
   min-font-size: 1.5em;
-  max-font-size: 4em;
+  max-font-size: 3em;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+@keyframes cards {
+  0%{
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  70%{
+    transform: scale(1.05);
+  }
+  100%{
+    transform: scale(1);
+    opacity: initial;
+  }
+
 }
 .ob-flex{
   display:flex;
@@ -22,21 +38,27 @@
   height: 70%;
 }
 .ob-card-container{
+  transition: all 2s;
+  margin-top:2vh;
+  margin-bottom: 2vh;
   min-width: 15vw;
   min-height: 45vh;
-  perspective: 70vh;
-  max-width: 100vw;
+  max-height: 45vh;
+  perspective: 130vh;
+  animation: cards ease-in-out 1 1.5s;
+
 }
 .ob-card{
   position:relative;
   width:100%;
   height:100%;
   text-align:center;
-  transition:1s;
+  transition:2s;
   transform-style:preserve-3d;
 }
 .ob-card-container:hover > .ob-card{
   transform: rotateY(180deg);
+  transition: all 0.2s ease-in-out;
 }
 .ob-front-side, .ob-back-side{
   position: absolute;
@@ -45,6 +67,7 @@
   width: 100%;
   height: 100%;
   border-radius: 5%;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
   backface-visibility: hidden;
 }
 .ob-front-side{
@@ -53,15 +76,7 @@
 .ob-back-side{
   color: white;
   transform: rotateY(180deg);
-}
-.ob-fs-cont{
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  align-items: center;
-  justify-content: space-around;
-  min-width: 15vw;
-  min-height: 35vh;
+  transition: all 0.5s step-end;
 }
 .ob-icon-size{
   font-size: 2em;
@@ -69,6 +84,10 @@
 }
 .ob-button-size{
   min-height: 5vh;
+}
+.ob-button-size:hover{
+  box-shadow: 0px 0px 5vh -7px rgb(0, 0, 0);
+  transition: all 0.25s ease-in;
 }
 .ob-client{
   color: black;
@@ -104,6 +123,44 @@
   color: hsla(118, 21%, 48%, 1);
   border: solid;
 }
+.ob-top-margin2vh{
+  padding-top: 1rem;
+}
+.ob-add-button{
+  width: 80px;
+  height: 80px;
+  margin-top: 20vh;
+  background-color: hsl(23, 95%, 64%);
+  font-size: 25pt;
+  box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+  transition: all 0.6s ease;
+  padding-left: 11px;
+  padding-right: 11px;
+
+}
+.ob-add-button:hover{
+  width: 90px;
+  height: 90px;
+  box-shadow: 9px 9px 26px 0px rgb(0, 0, 0);
+  transition: all 0.6s ease;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.ob-spinner{
+  margin-top: 35vh;
+}
 h4{
   color: hsla(0, 0%, 68%, 0.78);
+}
+.mat-card{
+  padding: 0;
+  margin: 0;
+  font-family: 'Space mono', monospace;
+}
+.mat-card-header,mat-card-title, .mat-card-subtitle, mat-card-content, mat-card-actions, mat-card-footer, h2, h3, h4, h5, h1{
+  font-family: 'Space mono', monospace;
+}
+.mat-card-title{
+  font-weight: bold;
+  font-size: 15pt;
 }

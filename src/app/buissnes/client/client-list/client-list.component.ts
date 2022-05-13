@@ -37,5 +37,8 @@ export class ClientListComponent implements OnInit {
       );
   }
 
+  columns: string[] = ["code","insertDate","name","number","status","modifyDate","isBR"];
+  columnsDisp: string[] = this.columns.slice();
+
 
 }

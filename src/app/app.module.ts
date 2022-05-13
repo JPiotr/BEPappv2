@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ClientService} from "./core/services/client.service";
 import {ClientModule} from "./buissnes/client/client.module";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {ClientModule} from "./buissnes/client/client.module";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ClientModule
+    ClientModule,
+    MatToolbarModule
   ],
   providers: [ClientService],
   bootstrap: [AppComponent]
