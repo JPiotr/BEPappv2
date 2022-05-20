@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ClientService} from "./core/services/client.service";
 import {ClientModule} from "./buissnes/client/client.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+
 
 @NgModule({
   declarations: [
@@ -15,9 +18,12 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     BrowserModule,
     BrowserAnimationsModule,
     ClientModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [ClientService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [AppComponent]
 })
 export class AppModule { }

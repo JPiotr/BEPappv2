@@ -1,0 +1,9 @@
+.ob_spacer{
+  flex: 1 1 auto;
+}
+
+.ob_search_bar{
+  font-size: large;
+  text-align: center;
+
+}

@@ -8,6 +8,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -18,15 +19,16 @@ import {MatTableModule} from "@angular/material/table";
   exports: [
     ClientListComponent
   ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatTableModule
-  ]
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatTableModule,
+        MatPaginatorModule
+    ]
 })
 export class ClientModule { }

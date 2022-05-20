@@ -1,2 +1,20 @@
-<mat-toolbar></mat-toolbar>
-<app-client-list></app-client-list>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span> BEP </span>
+    <span class="ob_spacer"></span>
+<!--    todo:Filtering and pagination-->
+<!--    <input matInput (keyup)="applyFilter($event)" placeholder="(...) search (...)" class="ob_search_bar" #input>-->
+<!--    <span class="ob_spacer"></span>-->
+    <button mat-stroked-button (click)="setCardsView()">
+      <mat-icon>
+        dashboard
+      </mat-icon>
+    </button>
+    <button mat-stroked-button (click)="setTableView()">
+      <mat-icon>
+        table_chart
+      </mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-client-list [viewType]="viewCategory" [dynamic]="dynamicFilter"></app-client-list>

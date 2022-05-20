@@ -1,4 +1,4 @@
-<!--1.Card View-->
+
 <ng-container *ngIf="(appState$ | async) as appState " [ngSwitch]="appState.dataState">
   <div class="ob-content">
     <ng-container *ngSwitchCase="dataState.LOADING">
@@ -8,178 +8,180 @@
 
         </mat-progress-spinner>
     </ng-container>
+    <ng-container *ngSwitchCase="dataState.LOADED" [ngSwitch]="viewType">
 <!--    todo: tableView-->
-<!--    <table mat-table *ngIf="appState.appData?.data?.clients as clients" [dataSource]="clients" class="mat-elevation-z8">-->
+      <ng-container *ngSwitchCase="1">
+        <div>
+          <table mat-table *ngIf="appState.appData?.data?.clients as clients" [dataSource]="clients" class="mat-elevation-z12">
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef> Code </th>
+              <td mat-cell *matCellDef="let client"> {{client.code}} </td>
+            </ng-container>
 
-<!--      &lt;!&ndash;- Note that these columns can be defined in any order.-->
-<!--            The actual rendered columns are set as a property on the row definition" &ndash;&gt;-->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let client"> {{client.name}} </td>
+            </ng-container>
 
-<!--      &lt;!&ndash; Position Column &ndash;&gt;-->
-<!--      <ng-container matColumnDef="code">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Code </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.code}} </td>-->
-<!--      </ng-container>-->
+            <ng-container matColumnDef="isBR">
+              <th mat-header-cell *matHeaderCellDef> Is BR </th>
+              <td mat-cell *matCellDef="let client"> {{client.isBR}} </td>
+            </ng-container>
 
-<!--      &lt;!&ndash; Name Column &ndash;&gt;-->
-<!--      <ng-container matColumnDef="name">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Name </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.name}} </td>-->
-<!--      </ng-container>-->
+            <ng-container matColumnDef="insertDate">
+              <th mat-header-cell *matHeaderCellDef> Insert Date </th>
+              <td mat-cell *matCellDef="let client"> {{client.insertDate}} </td>
+            </ng-container>
 
-<!--      &lt;!&ndash; Weight Column &ndash;&gt;-->
-<!--      <ng-container matColumnDef="isBR">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Is BR </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.isBR}} </td>-->
-<!--      </ng-container>-->
+            <ng-container matColumnDef="modifyDate">
+              <th mat-header-cell *matHeaderCellDef> Modify Date </th>
+              <td mat-cell *matCellDef="let client"> {{client.modifyDate}} </td>
+            </ng-container>
 
-<!--      &lt;!&ndash; Symbol Column &ndash;&gt;-->
-<!--      <ng-container matColumnDef="insertDate">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Insert Date </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.insertDate}} </td>-->
-<!--      </ng-container>-->
-<!--      <ng-container matColumnDef="modifyDate">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Insert Date </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.modifyDate}} </td>-->
-<!--      </ng-container>-->
-<!--      <ng-container matColumnDef="number">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Number </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.number}} </td>-->
-<!--      </ng-container>-->
-<!--      <ng-container matColumnDef="status">-->
-<!--        <th mat-header-cell *matHeaderCellDef> Status </th>-->
-<!--        <td mat-cell *matCellDef="let client"> {{client.status}} </td>-->
-<!--      </ng-container>-->
+            <ng-container matColumnDef="number">
+              <th mat-header-cell *matHeaderCellDef> Number </th>
+              <td mat-cell *matCellDef="let client"> {{client.number}} </td>
+            </ng-container>
 
-<!--      <tr mat-header-row *matHeaderRowDef="columns"></tr>-->
-<!--      <tr mat-row *matRowDef="let row; columns: columns;"></tr>-->
-<!--    </table>-->
-    <ng-container *ngSwitchCase="dataState.LOADED">
-      <div class="ob-card-container" *ngFor="let client of appState.appData?.data?.clients">
-        <div class="ob-card">
-          <ng-container *ngIf="client.status == defaultState.OK">
-            <mat-card class="ob-front-side ob-client ob-client-ok">
-              <mat-card-header  class="ob-top-margin2vh">
-                <mat-card-title>{{client.code}}</mat-card-title>
-                <mat-card-subtitle>
-                  <mat-icon class="ob-icon-size">
-                    check_circle_outline
-                  </mat-icon>
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content class="ob-flex  ob-size-100-70">
-                <h1 class="ob-front-size">
-                  {{client.name}}
-                </h1>
-              </mat-card-content>
-            </mat-card>
-          </ng-container>
-          <ng-container *ngIf="client.status == defaultState.BAD">
-            <mat-card class="ob-front-side ob-client ob-client-bad">
-              <mat-card-header class="ob-top-margin2vh">
-                <mat-card-title>{{client.code}}</mat-card-title>
-                <mat-card-subtitle>
-                  <mat-icon class="ob-icon-size">
-                    highlight_off
-                  </mat-icon>
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content class="ob-flex  ob-size-100-70">
-                <h1 class="ob-front-size">
-                  {{client.name}}
-                </h1>
-              </mat-card-content>
-            </mat-card>
-          </ng-container>
-          <ng-container *ngIf="client.status == defaultState.UNKNOWN">
-            <mat-card class="ob-front-side ob-client ob-client-unknown">
-              <mat-card-header class="ob-top-margin2vh">
-                <mat-card-title>{{client.code}}</mat-card-title>
-                <mat-card-subtitle>
-                  <mat-icon class="ob-icon-size">
-                    help_outline
-                  </mat-icon>
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content class="ob-flex  ob-size-100-70">
-                <h1 class="ob-front-size">
-                  {{client.name}}
-                </h1>
-              </mat-card-content>
-            </mat-card>
-          </ng-container>
-          <ng-container *ngIf="client.status == defaultState.NEW">
-            <mat-card class="ob-front-side ob-client ob-client-new">
-              <mat-card-header class="ob-top-margin2vh">
-                <mat-card-title>{{client.code}}</mat-card-title>
-                <mat-card-subtitle>
-                  <mat-icon class="ob-icon-size">
-                    add_circle_outline
-                  </mat-icon>
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content class="ob-flex  ob-size-100-70">
-                <h1 class="ob-front-size">
-                  {{client.name}}
-                </h1>
-              </mat-card-content>
-            </mat-card>
-          </ng-container>
-          <ng-container *ngIf="client.status == defaultState.CHANGED">
-            <mat-card class="ob-front-side ob-client ob-client-changed">
-              <mat-card-header class="ob-top-margin2vh">
-                <mat-card-title>{{client.code}}</mat-card-title>
-                <mat-card-subtitle>
-                  <mat-icon class="ob-icon-size">
-                    history
-                  </mat-icon>
-                </mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content class="ob-flex  ob-size-100-70">
-                <h1 class="ob-front-size">
-                  {{client.name}}
-                </h1>
-              </mat-card-content>
-            </mat-card>
-          </ng-container>
-          <mat-card class="ob-back-side">
-            <mat-card-header class="ob-top-margin2vh">
-              <mat-card-title>0</mat-card-title>
-              <mat-card-subtitle>Accesses Available</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-list>
-                <mat-divider></mat-divider>
-                <h4>Insert Date</h4>
-                <h2>{{client.insertDate | date:'d.MM.YYYY'}}</h2>
-                <mat-divider></mat-divider>
-                <h4>Last Modify Date</h4>
-                <h2>{{client.modifyDate | date:'d.MM.YYYY'}}</h2>
-                <mat-divider></mat-divider>
-                <h4>Accounting Office</h4>
-                <h2>
-                  <ng-container *ngIf="client.isBR == true">
-                    <mat-icon>done</mat-icon>
-                  </ng-container>
-                  <ng-container *ngIf="client.isBR == false">
-                    <mat-icon>clear</mat-icon>
-                  </ng-container>
-                </h2>
-              </mat-list>
-            </mat-card-content>
-            <mat-card-actions class="ob-flex">
-              <button mat-fab class="ob-button-size ob-icon-green">
-                <mat-icon>open_in_full</mat-icon>
-              </button>
-              <button mat-fab class="ob-button-size ob-icon-red">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-card-actions>
-          </mat-card>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let client"> {{client.status}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+          </table>
+<!--          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Clients"></mat-paginator>-->
         </div>
-      </div>
-      <button mat-fab class="ob-add-button" style="display: flex;align-items: center">
-        <mat-icon style="font-size: 50px; vertical-align: baseline;">person_add</mat-icon>
-      </button>
+      </ng-container>
+      <ng-container *ngSwitchCase="0">
+        <div class="ob-card-container" *ngFor="let client of appState.appData?.data?.clients">
+          <div class="ob-card">
+            <ng-container *ngIf="client.status == defaultState.OK">
+              <mat-card class="ob-front-side ob-client ob-client-ok">
+                <mat-card-header  class="ob-top-margin2vh">
+                  <mat-card-title>{{client.code}}</mat-card-title>
+                  <mat-card-subtitle>
+                    <mat-icon class="ob-icon-size">
+                      check_circle_outline
+                    </mat-icon>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="ob-flex  ob-size-100-70">
+                  <h1 class="ob-front-size">
+                    {{client.name}}
+                  </h1>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+            <ng-container *ngIf="client.status == defaultState.BAD">
+              <mat-card class="ob-front-side ob-client ob-client-bad">
+                <mat-card-header class="ob-top-margin2vh">
+                  <mat-card-title>{{client.code}}</mat-card-title>
+                  <mat-card-subtitle>
+                    <mat-icon class="ob-icon-size">
+                      highlight_off
+                    </mat-icon>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="ob-flex  ob-size-100-70">
+                  <h1 class="ob-front-size">
+                    {{client.name}}
+                  </h1>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+            <ng-container *ngIf="client.status == defaultState.UNKNOWN">
+              <mat-card class="ob-front-side ob-client ob-client-unknown">
+                <mat-card-header class="ob-top-margin2vh">
+                  <mat-card-title>{{client.code}}</mat-card-title>
+                  <mat-card-subtitle>
+                    <mat-icon class="ob-icon-size">
+                      help_outline
+                    </mat-icon>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="ob-flex  ob-size-100-70">
+                  <h1 class="ob-front-size">
+                    {{client.name}}
+                  </h1>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+            <ng-container *ngIf="client.status == defaultState.NEW">
+              <mat-card class="ob-front-side ob-client ob-client-new">
+                <mat-card-header class="ob-top-margin2vh">
+                  <mat-card-title>{{client.code}}</mat-card-title>
+                  <mat-card-subtitle>
+                    <mat-icon class="ob-icon-size">
+                      add_circle_outline
+                    </mat-icon>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="ob-flex  ob-size-100-70">
+                  <h1 class="ob-front-size">
+                    {{client.name}}
+                  </h1>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+            <ng-container *ngIf="client.status == defaultState.CHANGED">
+              <mat-card class="ob-front-side ob-client ob-client-changed">
+                <mat-card-header class="ob-top-margin2vh">
+                  <mat-card-title>{{client.code}}</mat-card-title>
+                  <mat-card-subtitle>
+                    <mat-icon class="ob-icon-size">
+                      history
+                    </mat-icon>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="ob-flex  ob-size-100-70">
+                  <h1 class="ob-front-size">
+                    {{client.name}}
+                  </h1>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+            <mat-card class="ob-back-side">
+              <mat-card-header class="ob-top-margin2vh">
+                <mat-card-title>0</mat-card-title>
+                <mat-card-subtitle>Accesses Available</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-list>
+                  <mat-divider></mat-divider>
+                  <h4>Insert Date</h4>
+                  <h2>{{client.insertDate | date:'d.MM.YYYY'}}</h2>
+                  <mat-divider></mat-divider>
+                  <h4>Last Modify Date</h4>
+                  <h2>{{client.modifyDate | date:'d.MM.YYYY'}}</h2>
+                  <mat-divider></mat-divider>
+                  <h4>Accounting Office</h4>
+                  <h2>
+                    <ng-container *ngIf="client.isBR == true">
+                      <mat-icon>done</mat-icon>
+                    </ng-container>
+                    <ng-container *ngIf="client.isBR == false">
+                      <mat-icon>clear</mat-icon>
+                    </ng-container>
+                  </h2>
+                </mat-list>
+              </mat-card-content>
+              <mat-card-actions class="ob-flex">
+                <button mat-fab class="ob-button-size ob-icon-green">
+                  <mat-icon>open_in_full</mat-icon>
+                </button>
+                <button mat-fab class="ob-button-size ob-icon-red">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+        <button mat-fab class="ob-add-button" style="display: flex;align-items: center">
+          <mat-icon style="font-size: 50px; vertical-align: baseline;">person_add</mat-icon>
+        </button>
+      </ng-container>
     </ng-container>
     <ng-container *ngSwitchCase="dataState.ERROR"></ng-container>
   </div>
