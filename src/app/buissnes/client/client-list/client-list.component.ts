@@ -8,6 +8,7 @@ import {ClientService} from "../../../core/services/client.service";
 import {catchError} from "rxjs/operators";
 
 
+// https://www.kindsonthegenius.com/passing-variables-between-components-in-angular-parent-child-path-param-service-and-router/#t4
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
@@ -39,6 +40,16 @@ export class ClientListComponent implements OnInit {
       );
   }
 
+  //todo:Create saving method!
+
+
+
+  public isAdding: boolean = false;
+
+  private addNewClient(): void{
+    this.isAdding = true;
+
+  }
 
   columns: string[] = ["code","insertDate","name","number","status","modifyDate","isBR"];
   columnsDisp: string[] = this.columns.slice();
