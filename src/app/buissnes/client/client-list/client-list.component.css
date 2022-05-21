@@ -13,18 +13,32 @@
   letter-spacing: 3px;
 }
 @keyframes cards {
-  0%{
+  0% {
     transform: scale(0.2);
     opacity: 0;
   }
-  70%{
+  70% {
     transform: scale(1.05);
   }
-  100%{
+  100% {
     transform: scale(1);
     opacity: initial;
   }
-
+}
+@keyframes cardsBack {
+  0% {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.2);
+    opacity: 0;
+    display: none;
+  }
 }
 .ob-flex{
   display:flex;
@@ -48,6 +62,19 @@
   animation: cards ease-in-out 1 1.5s;
 
 }
+.ob-card-container_back{
+  transition: all 2s;
+  margin-top:2vh;
+  margin-bottom: 2vh;
+  min-width: 15vw;
+  min-height: 45vh;
+  max-height: 45vh;
+  perspective: 130vh;
+  display: none;
+  animation: cardsBack ease-in-out 1 1.5s;
+}
+
+
 .ob-card{
   position:relative;
   width:100%;

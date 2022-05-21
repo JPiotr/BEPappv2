@@ -12,14 +12,14 @@
 <!--    todo: tableView-->
       <ng-container *ngSwitchCase="1">
         <div>
-          <table mat-table *ngIf="appState.appData?.data?.clients as clients" [dataSource]="clients" class="mat-elevation-z12">
+          <table mat-table *ngIf="appState.appData?.data?.clients as clients" [dataSource]="dataaa" class="mat-elevation-z12" matSort>
             <ng-container matColumnDef="code">
-              <th mat-header-cell *matHeaderCellDef> Code </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
               <td mat-cell *matCellDef="let client"> {{client.code}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
               <td mat-cell *matCellDef="let client"> {{client.name}} </td>
             </ng-container>
 
@@ -30,12 +30,12 @@
 
             <ng-container matColumnDef="insertDate">
               <th mat-header-cell *matHeaderCellDef> Insert Date </th>
-              <td mat-cell *matCellDef="let client"> {{client.insertDate}} </td>
+              <td mat-cell *matCellDef="let client"> {{client.insertDate | date:'d.MM.YYYY'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="modifyDate">
               <th mat-header-cell *matHeaderCellDef> Modify Date </th>
-              <td mat-cell *matCellDef="let client"> {{client.modifyDate}} </td>
+              <td mat-cell *matCellDef="let client"> {{client.modifyDate | date:'d.MM.YYYY'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="number">
@@ -55,7 +55,7 @@
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="0">
-        <div class="ob-card-container" *ngFor="let client of appState.appData?.data?.clients">
+        <div class="ob-card-container" *ngFor="let client of dataaa.data">
           <div class="ob-card">
             <ng-container *ngIf="client.status == defaultState.OK">
               <mat-card class="ob-front-side ob-client ob-client-ok">
@@ -178,7 +178,55 @@
             </mat-card>
           </div>
         </div>
-        <button mat-fab class="ob-add-button" style="display: flex;align-items: center">
+        <div [class.ob-card-container]="isAdding" [class.ob-card-container_back]="!isAdding" >
+          <div class="ob-card">
+            <mat-card class="ob-front-side ob-client ob-client-changed">
+              <mat-card-header class="ob-top-margin2vh">
+                <mat-card-title>??????</mat-card-title>
+                <mat-card-subtitle>
+                  <mat-icon class="ob-icon-size">
+                    history
+                  </mat-icon>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="ob-flex  ob-size-100-70">
+                <h1 class="ob-front-size">
+                  NEW CLIENT
+                </h1>
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="ob-back-side">
+              <mat-card-header class="ob-top-margin2vh">
+                <mat-card-title>0</mat-card-title>
+                <mat-card-subtitle>Accesses Available</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-list>
+                  <mat-divider></mat-divider>
+                  <h4>Name</h4>
+                  <h2>Name Input</h2>
+                  <mat-divider></mat-divider>
+                  <h4>Code</h4>
+                  <h2>Code Input</h2>
+                  <mat-divider></mat-divider>
+                  <h4>Accounting Office</h4>
+                  <h2>
+                    Accouting Office ratio
+                  </h2>
+                </mat-list>
+              </mat-card-content>
+              <mat-card-actions class="ob-flex">
+                <button mat-fab class="ob-button-size ob-icon-green">
+                  <mat-icon>open_in_full</mat-icon>
+                </button>
+                <button mat-fab class="ob-button-size ob-icon-red" (click)="close()">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+        <button mat-fab class="ob-add-button" style="display: flex;align-items: center" (click)="addNewClient()">
           <mat-icon style="font-size: 50px; vertical-align: baseline;">person_add</mat-icon>
         </button>
       </ng-container>

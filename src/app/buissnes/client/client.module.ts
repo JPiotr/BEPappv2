@@ -9,6 +9,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 
 
@@ -19,16 +20,17 @@ import {MatPaginatorModule} from "@angular/material/paginator";
   exports: [
     ClientListComponent
   ],
-    imports: [
-        CommonModule,
-        HttpClientModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        MatTableModule,
-        MatPaginatorModule
-    ]
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+  ]
 })
 export class ClientModule { }
